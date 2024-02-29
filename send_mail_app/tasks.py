@@ -9,8 +9,10 @@ logger = logging.getLogger(__name__)
 
 @shared_task(bind=True)
 def send_mail_func(self):
+   
     try:
         users= User.objects.all()
+        # to check for future 2 days timezone.locltime(user.date_-timme) * timedelta(days=2)
         for user in users:
             message='This is a test mail practising celery & django'
             mail_subject = 'Hi! Celery testing'
